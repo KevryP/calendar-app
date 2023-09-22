@@ -1,0 +1,30 @@
+.weekday-header {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.weekday-header > div {
+    text-align: center;
+    justify-content: end;
+    flex-basis: 14.28%;
+}
+
+.calendar {
+    font-weight: 700;
+}
+.calendar-header {
+    text-align: center;
+}
+
+.calendar-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.day {
+    background-color: grey;
+    flex-basis: 14%;
+    border: 1px solid white;
+    height: 100px;
+} 
