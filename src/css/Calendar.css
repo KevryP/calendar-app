@@ -27,4 +27,5 @@
     flex-basis: 14%;
     border: 1px solid white;
     height: 100px;
+    user-select: none;
 } 
