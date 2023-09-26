@@ -1,16 +1,28 @@
 import { useEffect, useState } from "react"
 
-function CalendarDay({day}){
+function CalendarDay({position, day, addSelected, isSelected, handleMouseMove}){
     const [bgColor, setBgColor] = useState("grey");
-    const dayClick = color => {
+    const [cSelected, setSelected] = useState(isSelected);
+
+    useEffect(() =>{
+        setSelected(isSelected);
+    },[isSelected]);
+
+    const changeColor = color => {
         if (bgColor == "grey"){
-            setBgColor("red");
+            addSelected(position);
         }
-        else {setBgColor("grey");}
-}
-    
+    }
+
     return(
-    <div className="day" onClick={() => dayClick("red")} style={{backgroundColor: bgColor}}>{day}</div>
+    <div className="day" 
+        onClick={() => changeColor("placeholder")} // Single Selection
+        style={{backgroundColor: cSelected ? "pink" : bgColor}}
+        onMouseDown={() => addSelected(position)}    // Start of Multi Selection
+        onMouseMove={() => handleMouseMove(position)}    // Dragging Multi Selection
+        >
+            {day}
+    </div>
     )
 }
 
