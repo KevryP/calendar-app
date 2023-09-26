@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
 
-function CalendarDay({day, addSelected, isSelected, handleMouseMove}){
+function CalendarDay({position, day, addSelected, isSelected, handleMouseMove}){
     const [bgColor, setBgColor] = useState("grey");
     const [cSelected, setSelected] = useState(isSelected);
-
 
     useEffect(() =>{
         setSelected(isSelected);
@@ -11,21 +10,16 @@ function CalendarDay({day, addSelected, isSelected, handleMouseMove}){
 
     const changeColor = color => {
         if (bgColor == "grey"){
-            setSelected(true);
-            addSelected(day);
-        }
-        else {
-            setBgColor("grey");
+            addSelected(position);
         }
     }
 
-
     return(
     <div className="day" 
-        onClick={() => changeColor("placeholder")} 
+        onClick={() => changeColor("placeholder")} // Single Selection
         style={{backgroundColor: cSelected ? "pink" : bgColor}}
-        onMouseDown={() => addSelected(day)}
-        onMouseMove={() => handleMouseMove(day)}
+        onMouseDown={() => addSelected(position)}    // Start of Multi Selection
+        onMouseMove={() => handleMouseMove(position)}    // Dragging Multi Selection
         >
             {day}
     </div>
